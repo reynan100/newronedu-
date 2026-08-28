@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..700,0..100,0..1&family=Karla:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:#FBF7F0;color:#2B2620;font-family:"Karla",system-ui,sans-serif;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;text-wrap:pretty}
+a{color:#2B2620;text-decoration:none}
+a:hover{color:#54603E}
+:focus-visible{outline:2px solid #54603E;outline-offset:3px}
+@keyframes nrDrift{from{transform:scale(1.13)}to{transform:scale(1)}}
+@keyframes nrLine{from{transform:translateY(110%);opacity:0}to{transform:none;opacity:1}}
+[data-line]{animation:nrLine .9s cubic-bezier(.16,.84,.44,1) both}
+[data-btn] svg{transition:transform .5s cubic-bezier(.16,.84,.44,1)}
+[data-btn]:hover svg{transform:rotate(-9deg) scale(1.06)}
+@media(max-width:880px){
+  [data-hero-photo]{width:100%!important}
+  [data-hero-veil]{background:linear-gradient(to bottom,rgba(251,247,240,.96) 0%,rgba(251,247,240,.9) 52%,rgba(251,247,240,.74) 100%)!important}
+  [data-row]{grid-template-columns:1fr!important;gap:4px!important}
+  [data-tiles]{grid-template-columns:repeat(2,1fr)!important}
+  [data-tiles] a{aspect-ratio:3/4!important}
+  [data-hero-text]{max-width:730px!important}
+  [data-foot]{flex-direction:column!important;align-items:flex-start!important}
+}
+@media(min-width:881px){[data-dock]{display:none!important}}
+@media(prefers-reduced-motion:reduce){
+  [data-rise],[data-line],[data-photo],[data-photo-in]{opacity:1!important;transform:none!important;clip-path:none!important;animation:none!important}
+}
+</style>
+<script src="./image-slot.js"></script>
+</helmet>
+
+<nav data-nav style="position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px clamp(24px,6vw,80px);transition:background .5s cubic-bezier(.16,.84,.44,1),box-shadow .5s ease,padding .5s ease">
+  <a href="#" style="font-family:'Fraunces',Georgia,serif;font-size:22px;letter-spacing:-.02em;font-variation-settings:'SOFT' 60,'WONK' 1,'opsz' 40">newron<span style="color:#54603E">edu</span></a>
+  <a href="#gabung" style="font-family:'Karla',sans-serif;font-size:14px;font-weight:500;padding:9px 20px;border:1px solid #D9C9AE;border-radius:999px;transition:background .4s ease,color .4s ease,border-color .4s ease" style-hover="background:#54603E;color:#FBF7F0;border-color:#54603E">Gabung</a>
+</nav>
+
+<header style="position:relative;min-height:100svh;display:flex;align-items:center;padding:150px 0 100px;overflow:hidden">
+  <div data-hero-photo style="position:absolute;top:0;bottom:0;right:0;width:48%;z-index:0;overflow:hidden;animation:nrDrift 2.6s cubic-bezier(.16,.84,.44,1) both;-webkit-mask-image:linear-gradient(to right,transparent 0%,rgba(0,0,0,.55) 30%,#000 66%);mask-image:linear-gradient(to right,transparent 0%,rgba(0,0,0,.55) 30%,#000 66%)">
+    <image-slot id="nr-hero" shape="rect" fit="cover" src="assets/hero-window.jpg" placeholder="FOTO HERO — orang beneran, cahaya hangat, ruang kosong di sisi kiri"></image-slot>
+  </div>
+  <div data-hero-veil style="position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(to right,rgba(251,247,240,.97) 0%,rgba(251,247,240,.93) 44%,rgba(251,247,240,.5) 100%)"></div>
+  <div style="position:relative;z-index:2;max-width:1140px;width:100%;margin:0 auto;padding:0 clamp(24px,6vw,80px)">
+    <div data-hero-text style="max-width:min(730px,50vw)">
+      <p data-line style="animation-delay:0s;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#6E6255;font-weight:500;margin-bottom:26px">Newronedu · Edukasi &amp; konsultasi</p>
+      <h1 style="font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:clamp(38px,7.2vw,76px);line-height:1.1;letter-spacing:-.02em;font-variation-settings:'SOFT' 60,'WONK' 1,'opsz' 120;margin-bottom:26px">
+        <span style="display:block;overflow:hidden;padding-bottom:.06em"><span data-line style="animation-delay:.08s;display:block">Ngerti dulu cara kerjanya,</span></span>
+        <span style="display:block;overflow:hidden;padding-bottom:.06em"><span data-line style="animation-delay:.16s;display:block;color:#54603E;font-variation-settings:'SOFT' 90,'WONK' 1,'opsz' 140">baru ambil keputusannya.</span></span>
+      </h1>
+      <div style="display:flex;flex-direction:column;gap:34px;max-width:33em">
+        <p data-line style="animation-delay:.24s;font-size:clamp(17px,2.2vw,20px);color:#6E6255">Soal ngasuh anak, milih jurusan, atau ngerti kenapa kamu bereaksi kayak gitu, semuanya ada penjelasannya. Kita bahas pelan-pelan sampai kamu bisa mutusin sendiri.</p>
+        <div data-line style="animation-delay:.32s;display:flex;flex-wrap:wrap;align-items:center;gap:18px 22px">
+          <a data-btn data-wa href="#" style="display:inline-flex;align-items:center;gap:11px;background:#54603E;color:#FBF7F0;font-family:'Karla',sans-serif;font-size:16.5px;font-weight:500;padding:16px 32px;border-radius:999px;box-shadow:0 1px 2px rgba(43,38,32,.14);transition:transform .5s cubic-bezier(.16,.84,.44,1),background .4s ease,box-shadow .5s ease" style-hover="transform:translateY(-3px);background:#414B2E;box-shadow:0 14px 28px -14px rgba(43,38,32,.55);color:#FBF7F0">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="width:20px;height:20px;flex:none"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm5.8 14.16c-.24.68-1.42 1.3-1.95 1.34-.5.04-.98.22-3.3-.69-2.78-1.1-4.55-3.94-4.69-4.13-.14-.19-1.12-1.49-1.12-2.85 0-1.35.71-2.02.96-2.29.25-.28.55-.35.73-.35h.52c.17 0 .4-.06.62.48.24.57.8 1.98.87 2.12.07.14.12.31.02.5-.09.19-.14.31-.28.47-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.17.28.74 1.22 1.59 1.98 1.09.97 2.01 1.27 2.29 1.41.28.14.45.12.62-.07.17-.19.71-.83.9-1.11.19-.28.38-.24.64-.14.26.09 1.66.78 1.94.93.28.14.47.21.54.33.07.11.07.66-.17 1.34Z"></path></svg>
+            Gabung komunitas gratis
+          </a>
+          <span style="font-size:13.5px;color:#6E6255">Gratis selamanya. Nggak ada spam.<br>Keluar kapan aja.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div style="background:#F3EBDD;border-top:1px solid #D9C9AE;border-bottom:1px solid #D9C9AE;padding:clamp(96px,13vw,168px) 0">
+  <div style="max-width:1140px;margin:0 auto;padding:0 clamp(24px,6vw,80px)">
+    <div style="display:flex;flex-direction:column;gap:20px;max-width:36em;margin-bottom:clamp(52px,7vw,92px)">
+      <p data-rise data-d="0" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#6E6255;font-weight:500">Tentang Newronedu</p>
+      <h2 data-rise data-d=".1" style="font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:clamp(30px,4.6vw,50px);line-height:1.14;letter-spacing:-.018em;font-variation-settings:'SOFT' 55,'WONK' 1,'opsz' 90">Satu tempat buat ngerti manusia, dari kecil sampai milih jalan hidup</h2>
+      <p data-rise data-d=".2" style="color:#6E6255">Newronedu itu platform edukasi dan konsultasi. Kita bahas empat hal yang sebenernya satu urusan yang sama: gimana manusia tumbuh, berpikir, dan ngambil keputusan.</p>
+    </div>
+    <div style="border-top:1px solid #D9C9AE">
+      <div data-rise data-d=".1" data-row style="display:grid;grid-template-columns:44px minmax(200px,.85fr) 1.9fr;gap:8px 44px;align-items:baseline;padding:34px 6px;border-bottom:1px solid #D9C9AE;transition:transform .6s cubic-bezier(.16,.84,.44,1),background .6s ease,opacity 1s cubic-bezier(.16,.84,.44,1)" style-hover="transform:translateX(10px);background:rgba(230,217,195,.4)">
+        <span style="font-size:12px;letter-spacing:.14em;color:#54603E;font-weight:500">01</span>
+        <h3 style="font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:clamp(22px,2.9vw,29px);line-height:1.15;font-variation-settings:'SOFT' 55,'WONK' 1,'opsz' 60">Perkembangan anak</h3>
+        <p style="color:#6E6255;font-size:16px;line-height:1.6">Kenapa anak umur segini belum bisa itu, dan kapan sebenernya perlu khawatir. Buat orang tua yang capek nebak-nebak.</p>
+      </div>
+      <div data-rise data-d=".2" data-row style="display:grid;grid-template-columns:44px minmax(200px,.85fr) 1.9fr;gap:8px 44px;align-items:baseline;padding:34px 6px;border-bottom:1px solid #D9C9AE;transition:transform .6s cubic-bezier(.16,.84,.44,1),background .6s ease,opacity 1s cubic-bezier(.16,.84,.44,1)" style-hover="transform:translateX(10px);background:rgba(230,217,195,.4)">
+        <span style="font-size:12px;letter-spacing:.14em;color:#54603E;font-weight:500">02</span>
+        <h3 style="font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:clamp(22px,2.9vw,29px);line-height:1.15;font-variation-settings:'SOFT' 55,'WONK' 1,'opsz' 60">Psikologi sehari-hari</h3>
+        <p style="color:#6E6255;font-size:16px;line-height:1.6">Kebiasaan, emosi, dan pola pikir yang bikin kamu stuck. Dibahas tanpa istilah yang bikin makin bingung.</p>
+      </div>
+      <div data-rise data-d=".3" data-row style="display:grid;grid-template-columns:44px minmax(200px,.85fr) 1.9fr;gap:8px 44px;align-items:baseline;padding:34px 6px;border-bottom:1px solid #D9C9AE;transition:transform .6s cubic-bezier(.16,.84,.44,1),background .6s ease,opacity 1s cubic-bezier(.16,.84,.44,1)" style-hover="transform:translateX(10px);background:rgba(230,217,195,.4)">
+        <span style="font-size:12px;letter-spacing:.14em;color:#54603E;font-weight:500">03</span>
+        <h3 style="font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:clamp(22px,2.9vw,29px);line-height:1.15;font-variation-settings:'SOFT' 55,'WONK' 1,'opsz' 60">Pilihan karir</h3>
+        <p style="color:#6E6255;font-size:16px;line-height:1.6">Buat yang lagi bingung mau ambil jurusan apa, atau udah kerja tapi ngerasa salah jalan. Kita bantu petakan, bukan kasih jawaban instan.</p>
+      </div>
+      <div data-rise data-d=".4" data-row style="display:grid;grid-template-columns:44px minmax(200px,.85fr) 1.9fr;gap:8px 44px;align-items:baseline;padding:34px 6px;border-bottom:1px solid #D9C9AE;transition:transform .6s cubic-bezier(.16,.84,.44,1),background .6s ease,opacity 1s cubic-bezier(.16,.84,.44,1)" style-hover="transform:translateX(10px);background:rgba(230,217,195,.4)">
+        <span style="font-size:12px;letter-spacing:.14em;color:#54603E;font-weight:500">04</span>
+        <h3 style="font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:clamp(22px,2.9vw,29px);line-height:1.15;font-variation-settings:'SOFT' 55,'WONK' 1,'opsz' 60">Edukasi umum</h3>
+        <p style="color:#6E6255;font-size:16px;line-height:1.6">Cara belajar yang beneran nempel, kenapa hafalan cepat hilang, dan gimana bikin ilmu bertahan lebih dari semalam.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section style="padding:clamp(96px,13vw,168px) 0">
+  <div style="max-width:1140px;margin:0 auto;padding:0 clamp(24px,6vw,80px)">
+    <div style="display:flex;flex-direction:column;gap:20px;max-width:36em;margin-bottom:clamp(52px,7vw,92px)">
+      <p data-rise data-d="0" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#6E6255;font-weight:500">Isi grupnya</p>
+      <h2 data-rise data-d=".1" style="font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:clamp(30px,4.6vw,50px);line-height:1.14;letter-spacing:-.018em;font-variation-settings:'SOFT' 55,'WONK' 1,'opsz' 90">Ngobrol, bukan cuma nonton</h2>
+      <p data-rise data-d=".2" style="color:#6E6255">Di Instagram kamu cuma bisa scroll. Di grup kamu bisa nanya soal kondisi kamu sendiri, dijawab, terus lanjut ngobrol sama orang yang lagi mikirin hal yang sama.</p>
+    </div>
+    <div style="display:grid;gap:clamp(16px,2.4vw,26px);grid-template-columns:repeat(auto-fit,minmax(250px,1fr))">
+      <article data-rise data-d=".1" style="background:#F3EBDD;border:1px solid #D9C9AE;border-radius:20px;padding:34px 30px 38px;display:flex;flex-direction:column;gap:12px;transition:transform .6s cubic-bezier(.16,.84,.44,1),background .6s ease,opacity 1s cubic-bezier(.16,.84,.44,1)" style-hover="transform:translateY(-6px);background:#EFE6D4">
+        <span style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#54603E;font-weight:500;margin-bottom:14px">Rutin</span>
+        <h3 style="font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:23px;line-height:1.2;font-variation-settings:'SOFT' 50,'WONK' 1,'opsz' 40">Satu bahasan tiap minggu</h3>
+        <p style="font-size:15.5px;color:#6E6255;line-height:1.6">Topik dipecah pelan-pelan sampai kelar. Nggak ada istilah yang dilempar gitu aja tanpa dijelasin.</p>
+      </article>
+      <article data-rise data-d=".22" style="background:#F3EBDD;border:1px solid #D9C9AE;border-radius:20px;padding:34px 30px 38px;display:flex;flex-direction:column;gap:12px;transition:transform .6s cubic-bezier(.16,.84,.44,1),background .6s ease,opacity 1s cubic-bezier(.16,.84,.44,1)" style-hover="transform:translateY(-6px);background:#EFE6D4">
+        <span style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#54603E;font-weight:500;margin-bottom:14px">Konsultasi</span>
+        <h3 style="font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:23px;line-height:1.2;font-variation-settings:'SOFT' 50,'WONK' 1,'opsz' 40">Pertanyaan kamu dijawab</h3>
+        <p style="font-size:15.5px;color:#6E6255;line-height:1.6">Soal anak yang telat ngomong, jurusan yang lagi kamu timbang, atau kebiasaan yang susah dilepas. Dijawab, bukan cuma di-like.</p>
+      </article>
+      <article data-rise data-d=".34" style="background:#F3EBDD;border:1px solid #D9C9AE;border-radius:20px;padding:34px 30px 38px;display:flex;flex-direction:column;gap:12px;transition:transform .6s cubic-bezier(.16,.84,.44,1),background .6s ease,opacity 1s cubic-bezier(.16,.84,.44,1)" style-hover="transform:translateY(-6px);background:#EFE6D4">
+        <span style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#54603E;font-weight:500;margin-bottom:14px">Materi</span>
+        <h3 style="font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:23px;line-height:1.2;font-variation-settings:'SOFT' 50,'WONK' 1,'opsz' 40">Dapat duluan</h3>
+        <p style="font-size:15.5px;color:#6E6255;line-height:1.6">Rangkuman, checklist, dan template belajar masuk grup dulu sebelum dipost ke publik.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<div style="background:#F3EBDD;border-top:1px solid #D9C9AE;border-bottom:1px solid #D9C9AE;padding:clamp(96px,13vw,168px) 0">
+  <div style="max-width:1140px;margin:0 auto;padding:0 clamp(24px,6vw,80px)">
+    <div style="display:flex;flex-direction:column;gap:20px;max-width:34em;margin-bottom:clamp(52px,7vw,92px)">
+      <p data-rise data-d="0" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#6E6255;font-weight:500">Yang biasa dibahas</p>
+      <h2 data-rise data-d=".1" style="font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:clamp(30px,4.6vw,50px);line-height:1.14;letter-spacing:-.018em;font-variation-settings:'SOFT' 55,'WONK' 1,'opsz' 90">Empat pertanyaan yang paling sering masuk</h2>
+    </div>
+    <div data-tiles style="display:grid;gap:clamp(14px,2vw,22px);grid-template-columns:repeat(4,1fr)">
+      <a data-rise data-d=".1" href="#gabung" style="position:relative;display:block;aspect-ratio:4/5;border-radius:18px;overflow:hidden;transition:transform .6s cubic-bezier(.16,.84,.44,1),opacity 1s cubic-bezier(.16,.84,.44,1)" style-hover="transform:translateY(-6px)">
+        <span data-photo style="position:absolute;inset:0;clip-path:inset(100% 0 0 0);transition:clip-path 1.2s cubic-bezier(.16,.84,.44,1)">
+          <span data-photo-in style="position:absolute;inset:0;transform:scale(1.08);transition:transform 1.2s cubic-bezier(.16,.84,.44,1)">
+            <image-slot id="nr-tile-1" shape="rect" fit="cover" placeholder="Foto anak sedang main atau belajar, momen candid"></image-slot>
+          </span>
+        </span>
+        <span style="position:absolute;inset:0;background:linear-gradient(to top,rgba(43,38,32,.74) 0%,rgba(43,38,32,.18) 48%,transparent 68%);pointer-events:none"></span>
+        <span style="position:absolute;top:16px;left:16px;font-family:'Fraunces',Georgia,serif;font-size:13px;color:rgba(251,247,240,.8);font-variation-settings:'SOFT' 60,'WONK' 1,'opsz' 40;letter-spacing:.02em">01</span>
+        <span style="position:absolute;left:18px;right:18px;bottom:18px;font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:18px;line-height:1.3;color:#FBF7F0;font-variation-settings:'SOFT' 55,'WONK' 1,'opsz' 40">Anak saya telat ngomong, normal atau nggak</span>
+      </a>
+      <a data-rise data-d=".2" href="#gabung" style="position:relative;display:block;aspect-ratio:4/5;border-radius:18px;overflow:hidden;transition:transform .6s cubic-bezier(.16,.84,.44,1),opacity 1s cubic-bezier(.16,.84,.44,1)" style-hover="transform:translateY(-6px)">
+        <span data-photo style="position:absolute;inset:0;clip-path:inset(100% 0 0 0);transition:clip-path 1.2s cubic-bezier(.16,.84,.44,1)">
+          <span data-photo-in style="position:absolute;inset:0;transform:scale(1.08);transition:transform 1.2s cubic-bezier(.16,.84,.44,1)">
+            <image-slot id="nr-tile-2" shape="rect" fit="cover" placeholder="Foto orang muda merenung di meja kerja atau kampus"></image-slot>
+          </span>
+        </span>
+        <span style="position:absolute;inset:0;background:linear-gradient(to top,rgba(43,38,32,.74) 0%,rgba(43,38,32,.18) 48%,transparent 68%);pointer-events:none"></span>
+        <span style="position:absolute;top:16px;left:16px;font-family:'Fraunces',Georgia,serif;font-size:13px;color:rgba(251,247,240,.8);font-variation-settings:'SOFT' 60,'WONK' 1,'opsz' 40;letter-spacing:.02em">02</span>
+        <span style="position:absolute;left:18px;right:18px;bottom:18px;font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:18px;line-height:1.3;color:#FBF7F0;font-variation-settings:'SOFT' 55,'WONK' 1,'opsz' 40">Udah semester empat dan ngerasa salah jurusan</span>
+      </a>
+      <a data-rise data-d=".3" href="#gabung" style="position:relative;display:block;aspect-ratio:4/5;border-radius:18px;overflow:hidden;transition:transform .6s cubic-bezier(.16,.84,.44,1),opacity 1s cubic-bezier(.16,.84,.44,1)" style-hover="transform:translateY(-6px)">
+        <span data-photo style="position:absolute;inset:0;clip-path:inset(100% 0 0 0);transition:clip-path 1.2s cubic-bezier(.16,.84,.44,1)">
+          <span data-photo-in style="position:absolute;inset:0;transform:scale(1.08);transition:transform 1.2s cubic-bezier(.16,.84,.44,1)">
+            <image-slot id="nr-tile-3" shape="rect" fit="cover" placeholder="Foto seseorang menatap keluar jendela, tenang"></image-slot>
+          </span>
+        </span>
+        <span style="position:absolute;inset:0;background:linear-gradient(to top,rgba(43,38,32,.74) 0%,rgba(43,38,32,.18) 48%,transparent 68%);pointer-events:none"></span>
+        <span style="position:absolute;top:16px;left:16px;font-family:'Fraunces',Georgia,serif;font-size:13px;color:rgba(251,247,240,.8);font-variation-settings:'SOFT' 60,'WONK' 1,'opsz' 40;letter-spacing:.02em">03</span>
+        <span style="position:absolute;left:18px;right:18px;bottom:18px;font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:18px;line-height:1.3;color:#FBF7F0;font-variation-settings:'SOFT' 55,'WONK' 1,'opsz' 40">Kenapa nunda terus padahal tau caranya</span>
+      </a>
+      <a data-rise data-d=".4" href="#gabung" style="position:relative;display:block;aspect-ratio:4/5;border-radius:18px;overflow:hidden;transition:transform .6s cubic-bezier(.16,.84,.44,1),opacity 1s cubic-bezier(.16,.84,.44,1)" style-hover="transform:translateY(-6px)">
+        <span data-photo style="position:absolute;inset:0;clip-path:inset(100% 0 0 0);transition:clip-path 1.2s cubic-bezier(.16,.84,.44,1)">
+          <span data-photo-in style="position:absolute;inset:0;transform:scale(1.08);transition:transform 1.2s cubic-bezier(.16,.84,.44,1)">
+            <image-slot id="nr-tile-4" shape="rect" fit="cover" placeholder="Foto buku/catatan berantakan di meja belajar malam"></image-slot>
+          </span>
+        </span>
+        <span style="position:absolute;inset:0;background:linear-gradient(to top,rgba(43,38,32,.74) 0%,rgba(43,38,32,.18) 48%,transparent 68%);pointer-events:none"></span>
+        <span style="position:absolute;top:16px;left:16px;font-family:'Fraunces',Georgia,serif;font-size:13px;color:rgba(251,247,240,.8);font-variation-settings:'SOFT' 60,'WONK' 1,'opsz' 40;letter-spacing:.02em">04</span>
+        <span style="position:absolute;left:18px;right:18px;bottom:18px;font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:18px;line-height:1.3;color:#FBF7F0;font-variation-settings:'SOFT' 55,'WONK' 1,'opsz' 40">Belajar semalaman, besoknya lupa semua</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<section id="gabung" style="position:relative;overflow:hidden;padding:clamp(104px,14vw,180px) 0;text-align:center">
+  <div data-photo style="position:absolute;inset:0;z-index:0;clip-path:inset(100% 0 0 0);transition:clip-path 1.2s cubic-bezier(.16,.84,.44,1)">
+    <div data-photo-in style="position:absolute;inset:0;transform:scale(1.08);transition:transform 1.2s cubic-bezier(.16,.84,.44,1);-webkit-mask-image:linear-gradient(to bottom,transparent 0%,#000 30%,#000 70%,transparent 100%);mask-image:linear-gradient(to bottom,transparent 0%,#000 30%,#000 70%,transparent 100%)">
+      <image-slot id="nr-band" shape="rect" fit="cover" placeholder="FOTO KEDUA — suasana ngobrol atau close-up, jangan foto stok"></image-slot>
+    </div>
+  </div>
+  <div data-band-veil style="position:absolute;inset:0;z-index:1;pointer-events:none;background:rgba(251,247,240,.9)"></div>
+  <div style="position:relative;z-index:2;max-width:1140px;margin:0 auto;padding:0 clamp(24px,6vw,80px);display:flex;flex-direction:column;align-items:center;gap:22px">
+    <h2 data-rise data-d="0" style="font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:clamp(29px,4.4vw,48px);line-height:1.14;letter-spacing:-.018em;font-variation-settings:'SOFT' 55,'WONK' 1,'opsz' 90;max-width:16em">Bawa pertanyaan kamu, jangan dipendem sendiri</h2>
+    <p data-rise data-d=".12" style="color:#6E6255;max-width:31em">Grup WhatsApp-nya gratis dan terbuka. Masuk, baca-baca dulu, nanya kalau udah siap.</p>
+    <div data-rise data-d=".24" style="display:flex;flex-direction:column;align-items:center;gap:16px;margin-top:14px">
+      <a data-btn data-wa href="#" style="display:inline-flex;align-items:center;gap:11px;background:#54603E;color:#FBF7F0;font-family:'Karla',sans-serif;font-size:16.5px;font-weight:500;padding:16px 32px;border-radius:999px;box-shadow:0 1px 2px rgba(43,38,32,.14);transition:transform .5s cubic-bezier(.16,.84,.44,1),background .4s ease,box-shadow .5s ease" style-hover="transform:translateY(-3px);background:#414B2E;box-shadow:0 14px 28px -14px rgba(43,38,32,.55);color:#FBF7F0">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="width:20px;height:20px;flex:none"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm5.8 14.16c-.24.68-1.42 1.3-1.95 1.34-.5.04-.98.22-3.3-.69-2.78-1.1-4.55-3.94-4.69-4.13-.14-.19-1.12-1.49-1.12-2.85 0-1.35.71-2.02.96-2.29.25-.28.55-.35.73-.35h.52c.17 0 .4-.06.62.48.24.57.8 1.98.87 2.12.07.14.12.31.02.5-.09.19-.14.31-.28.47-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.17.28.74 1.22 1.59 1.98 1.09.97 2.01 1.27 2.29 1.41.28.14.45.12.62-.07.17-.19.71-.83.9-1.11.19-.28.38-.24.64-.14.26.09 1.66.78 1.94.93.28.14.47.21.54.33.07.11.07.66-.17 1.34Z"></path></svg>
+        Gabung komunitas gratis
+      </a>
+      <p style="font-size:13.5px;color:#6E6255">Gratis selamanya. Nggak ada spam. Keluar kapan aja.</p>
+    </div>
+  </div>
+</section>
+
+<section style="padding:clamp(80px,10vw,124px) 0;text-align:center">
+  <div style="max-width:1140px;margin:0 auto;padding:0 clamp(24px,6vw,80px);display:flex;flex-direction:column;align-items:center;gap:28px">
+    <p data-rise data-d="0" style="color:#6E6255">Belum siap gabung? Kepoin dulu aja.</p>
+    <div data-rise data-d=".12" style="display:flex;justify-content:center;flex-wrap:wrap;gap:12px">
+      <a href="#" style="display:inline-flex;align-items:center;gap:9px;border:1px solid #D9C9AE;border-radius:999px;padding:11px 22px;font-size:15px;transition:transform .5s cubic-bezier(.16,.84,.44,1),background .4s ease,border-color .4s ease" style-hover="transform:translateY(-3px);background:#F3EBDD;border-color:#E6D9C3;color:#2B2620">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" style="width:17px;height:17px"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg>Instagram</a>
+      <a href="#" style="display:inline-flex;align-items:center;gap:9px;border:1px solid #D9C9AE;border-radius:999px;padding:11px 22px;font-size:15px;transition:transform .5s cubic-bezier(.16,.84,.44,1),background .4s ease,border-color .4s ease" style-hover="transform:translateY(-3px);background:#F3EBDD;border-color:#E6D9C3;color:#2B2620">
+        <svg viewBox="0 0 24 24" fill="currentColor" style="width:17px;height:17px"><path d="M16.6 5.8a4.3 4.3 0 0 1-1-2.8h-3v12a2.4 2.4 0 1 1-1.7-2.3V9.6a5.5 5.5 0 1 0 4.7 5.4V9.7a7.2 7.2 0 0 0 4.2 1.3V8a4.3 4.3 0 0 1-3.2-2.2Z"></path></svg>TikTok</a>
+      <a href="#" style="display:inline-flex;align-items:center;gap:9px;border:1px solid #D9C9AE;border-radius:999px;padding:11px 22px;font-size:15px;transition:transform .5s cubic-bezier(.16,.84,.44,1),background .4s ease,border-color .4s ease" style-hover="transform:translateY(-3px);background:#F3EBDD;border-color:#E6D9C3;color:#2B2620">
+        <svg viewBox="0 0 24 24" fill="currentColor" style="width:17px;height:17px"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4a2.5 2.5 0 0 0-1.8 1.8A26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8ZM10 15V9l5.2 3Z"></path></svg>YouTube</a>
+      <a href="#" style="display:inline-flex;align-items:center;gap:9px;border:1px solid #D9C9AE;border-radius:999px;padding:11px 22px;font-size:15px;transition:transform .5s cubic-bezier(.16,.84,.44,1),background .4s ease,border-color .4s ease" style-hover="transform:translateY(-3px);background:#F3EBDD;border-color:#E6D9C3;color:#2B2620">
+        <svg viewBox="0 0 24 24" fill="currentColor" style="width:17px;height:17px"><path d="M21.9 4.5 18.7 19c-.2 1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.4-5 9.1-8.2c.4-.4-.1-.6-.6-.2L6.3 12.9l-4.8-1.5c-1-.3-1.1-1 .2-1.5l18.8-7.2c.9-.3 1.6.2 1.4 1.8Z"></path></svg>Telegram</a>
+    </div>
+  </div>
+</section>
+
+<footer style="border-top:1px solid #D9C9AE;padding:36px 0 clamp(46px,8vw,64px);font-size:14px;color:#6E6255">
+  <div data-foot style="max-width:1140px;margin:0 auto;padding:0 clamp(24px,6vw,80px);display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;align-items:center">
+    <span style="font-family:'Fraunces',Georgia,serif;font-size:17px;color:#2B2620;font-variation-settings:'SOFT' 60,'WONK' 1,'opsz' 40">newronedu</span>
+    <span>Edukasi dan konsultasi buat orang biasa.</span>
+  </div>
+</footer>
+
+<div data-dock style="position:fixed;left:14px;right:14px;bottom:14px;z-index:70;transform:translateY(140%);transition:transform .7s cubic-bezier(.16,.84,.44,1)">
+  <a data-btn data-wa href="#" style="display:flex;align-items:center;justify-content:center;gap:11px;background:#54603E;color:#FBF7F0;font-family:'Karla',sans-serif;font-size:16.5px;font-weight:500;padding:16px 28px;border-radius:999px;box-shadow:0 12px 30px -12px rgba(43,38,32,.6)">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="width:20px;height:20px;flex:none"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm5.8 14.16c-.24.68-1.42 1.3-1.95 1.34-.5.04-.98.22-3.3-.69-2.78-1.1-4.55-3.94-4.69-4.13-.14-.19-1.12-1.49-1.12-2.85 0-1.35.71-2.02.96-2.29.25-.28.55-.35.73-.35h.52c.17 0 .4-.06.62.48.24.57.8 1.98.87 2.12.07.14.12.31.02.5-.09.19-.14.31-.28.47-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.17.28.74 1.22 1.59 1.98 1.09.97 2.01 1.27 2.29 1.41.28.14.45.12.62-.07.17-.19.71-.83.9-1.11.19-.28.38-.24.64-.14.26.09 1.66.78 1.94.93.28.14.47.21.54.33.07.11.07.66-.17 1.34Z"></path></svg>
+    Gabung komunitas gratis
+  </a>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;waLink&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://chat.whatsapp.com/&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Tautan&quot;},&quot;veilStrength&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:0.93,&quot;min&quot;:0.6,&quot;max&quot;:0.98,&quot;step&quot;:0.01,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Foto&quot;}}">
+class Component extends DCLogic {
+  componentDidMount() {
+    const root = document;
+    const q = (s) => Array.from(root.querySelectorAll(s));
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const EASE = 'cubic-bezier(.16,.84,.44,1)';
+
+    const wa = this.props.waLink;
+    if (wa) q('[data-wa]').forEach(a => { a.setAttribute('href', wa); a.setAttribute('target', '_blank'); a.setAttribute('rel', 'noopener'); });
+
+    const veil = this.props.veilStrength;
+    if (typeof veil === 'number') {
+      const hv = root.querySelector('[data-hero-veil]');
+      if (hv) hv.style.background = 'linear-gradient(to right,rgba(251,247,240,' + Math.min(1, veil + .05) + ') 0%,rgba(251,247,240,' + veil + ') 44%,rgba(251,247,240,' + Math.max(0, veil - .33) + ') 100%)';
+      const bv = root.querySelector('[data-band-veil]');
+      if (bv) bv.style.background = 'rgba(251,247,240,' + veil + ')';
+    }
+
+    // hero lines animate declaratively (helmet @keyframes) — never JS-dependent.
+    const all = q('[data-rise]').concat(q('[data-photo]'));
+    const reveal = (el) => {
+      el.style.transitionDelay = el.getAttribute('data-d') ? el.getAttribute('data-d') + 's' : '0s';
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+    };
+    const revealPhoto = (el) => {
+      el.style.clipPath = 'inset(0 0 0 0)';
+      const inner = el.querySelector('[data-photo-in]');
+      if (inner) inner.style.transform = 'none';
+    };
+    const show = (el) => { if (el.hasAttribute('data-photo')) revealPhoto(el); else reveal(el); };
+
+    // clear any hidden state left behind by a previous mount, then re-arm
+    all.forEach(show);
+
+    if (reduce || !('IntersectionObserver' in window)) {
+      this._sweep = null;
+    } else {
+      let pending = all.slice();
+      pending.forEach(el => {
+        if (el.hasAttribute('data-photo')) {
+          el.style.clipPath = 'inset(100% 0 0 0)';
+          const inner = el.querySelector('[data-photo-in]');
+          if (inner) inner.style.transform = 'scale(1.08)';
+        } else {
+          el.style.transitionDelay = '0s';
+          el.style.opacity = '0';
+          el.style.transform = 'translateY(24px)';
+        }
+      });
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (!e.isIntersecting) return;
+          show(e.target);
+          io.unobserve(e.target);
+          pending = pending.filter(p => p !== e.target);
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -6% 0px' });
+      pending.forEach(el => io.observe(el));
+      this._io = io;
+      // sweep on every scroll tick and shortly after mount: nothing at or above
+      // the fold can stay hidden, even on instant jump-scrolls
+      this._sweep = () => {
+        if (!pending.length) return;
+        pending = pending.filter(el => {
+          const r = el.getBoundingClientRect();
+          if (r.top < window.innerHeight * 0.9) { show(el); io.unobserve(el); return false; }
+          return true;
+        });
+      };
+      setTimeout(this._sweep, 300);
+    }
+
+    // nav + dock on scroll
+    const nav = root.querySelector('[data-nav]');
+    const dock = root.querySelector('[data-dock]');
+    let ticking = false;
+    const onScroll = () => {
+      const y = window.scrollY || window.pageYOffset;
+      if (nav) {
+        const stuck = y > 40;
+        nav.style.background = stuck ? 'rgba(251,247,240,.88)' : 'transparent';
+        nav.style.backdropFilter = stuck ? 'blur(12px)' : 'none';
+        nav.style.webkitBackdropFilter = stuck ? 'blur(12px)' : 'none';
+        nav.style.boxShadow = stuck ? '0 1px 0 #D9C9AE' : 'none';
+        nav.style.paddingTop = stuck ? '13px' : '20px';
+        nav.style.paddingBottom = stuck ? '13px' : '20px';
+      }
+      if (dock) dock.style.transform = y > window.innerHeight * 0.85 ? 'translateY(0)' : 'translateY(140%)';
+      if (this._sweep) this._sweep();
+      ticking = false;
+    };
+    this._onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    onScroll();
+  }
+  componentDidUpdate() { if (this._sweep) this._sweep(); }
+  componentWillUnmount() {
+    if (this._onScroll) window.removeEventListener('scroll', this._onScroll);
+    if (this._io) this._io.disconnect();
+  }
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
